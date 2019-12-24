@@ -1,0 +1,21 @@
+#!/usr/bin/env node
+const program = require('commander');
+//引入 init refesh 方法
+const { init, refesh } = require('../lib/api')
+//版本号
+program.version(require('../package').version)
+
+// 创建项目：init + 项目名称指令
+program
+  .command('init <name>')
+  .description('init project')
+  //执行
+  .action(init)
+
+// 根据项目的Views结构刷新路由指令
+program
+  .command('refesh')
+  .description('refesh routers ...')
+  //执行
+  .action(refesh)
+program.parse(process.argv)
